@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title><h1 style="font-size: 13px;">Queue Reservation Application For Krua Pa Lai</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center" [fullscreen]="true" color="brown2-1000">
+
+
+  <ion-card class="ion-card">
+    <ion-title class="haed">สมัครสมาชิก</ion-title>
+      <ion-item color="dark" class="ion-item">
+        <ion-label position="floating">ชื่อพนักงาน</ion-label>
+        <ion-input type="text" [(ngModel)]="txtusername"></ion-input>
+      </ion-item>
+
+      <ion-item color="dark" class="ion-item">
+        <ion-label position="floating">ชื่อ-นามสกุล</ion-label>
+        <ion-input type="text" [(ngModel)]="txtname"></ion-input>
+      </ion-item>
+
+      <ion-item color="dark" class="ion-item">
+        <ion-label position="floating">เบอร์โทร</ion-label>
+        <ion-input type="text" [(ngModel)]="txtphone"></ion-input>
+      </ion-item>
+
+      <ion-item color="dark" class="ion-item">
+        <ion-label position="floating">รหัสผ่าน</ion-label>
+        <ion-input type="text" [(ngModel)]="txtpassword"></ion-input>
+      </ion-item>
+
+      <ion-item color="dark" class="ion-item">
+        <ion-label position="floating">ยืนยันรหัสผ่าน</ion-label>
+        <ion-input type="text" [(ngModel)]="txtcompassword"></ion-input>
+      </ion-item>
+
+      <ion-button size="large" (click)="gotohome1()" class="ion-buttonlogin" color="brown-1000">สมัครสมาชิก</ion-button>
+
+  </ion-card>
+</ion-content>
+

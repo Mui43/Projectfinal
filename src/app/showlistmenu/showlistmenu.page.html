@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title><h1 style="font-size: 13px;">Queue Reservation Application For Krua Pa Lai</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="brown2-1000">
+  <ion-card color="white-500" *ngFor="let mb of menu">
+    <ion-card-content>
+      <p style="padding-bottom: 2%;">รหัสคิว : {{mb.id}}</p>
+      <p style="padding-bottom: 2%;">เวลาที่สั่ง : {{mb.created_at}}</p>
+      <p style="padding-bottom: 2%;">สถานะ : {{mb.status}}</p>
+      <p>รายละเอียด : {{mb.name}}</p>
+      <ion-button style="padding-top: 2%;" color="gray-1000" (click)="edit(mb)"><p>แก้ไขข้อมูล</p></ion-button>
+      <ion-button style="padding-top: 2%;" color="danger" (click)="confirmDelete(mb.id)"><p style="color: white;">ลบข้อมูล</p></ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
