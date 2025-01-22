@@ -8,18 +8,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="brown2-1000">
-      <ion-card class="ion-card">
-        <ion-title class="title">จองคิวอาหาร</ion-title>
+  <ion-card class="ion-card">
+    <ion-title class="title">จองคิวอาหาร</ion-title>
+      <ion-item class="ion-item">
+        <ion-label position="floating" >กรุณาใส่เมนูที่ต้องการ</ion-label>
+        <ion-input type="text" [(ngModel)]="txtname"></ion-input>
+        <ion-select label="กรุณายืนยันการสั่ง : " [(ngModel)]="txtstatus" style="margin-bottom: 20px;">
+        <ion-select-option value="ยืนยันการสั่ง">ยืนยันการสั่ง</ion-select-option>
+        </ion-select>
+      </ion-item>
+    <ion-button expand="block" (click)="showQueueNumber()" (click)="addmenus()" class="ion-item2" color="brown-1000">รับคิว</ion-button>
 
-          <ion-item class="ion-item">
-            <ion-label position="floating" >กรุณาใส่เมนูที่ต้องการ</ion-label>
-            <ion-input type="text" [(ngModel)]="txtname"></ion-input>
+    <ion-grid >
+      <ion-row>
+        <ion-col *ngFor="let i of Product ">
+          <ion-card class="menu">
+            <img alt="" [src]=" i.image" class="imgmenu"/>
+            <ion-label><h2>{{i.name}}</h2></ion-label>
+            <ion-label><p>ราคา {{i.price}} บาท</p></ion-label>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-            <ion-select label="กรุณายืนยันการสั่ง : " [(ngModel)]="txtstatus" style="margin-bottom: 20px;">
-              <ion-select-option value="ยืนยันการสั่ง">ยืนยันการสั่ง</ion-select-option>
-            </ion-select>
-          </ion-item>
-
-          <ion-button expand="block" (click)="showQueueNumber()" (click)="addmenus()" class="ion-item2" color="brown-1000">รับคิว</ion-button>
-    </ion-card>
+  </ion-card>
 </ion-content>

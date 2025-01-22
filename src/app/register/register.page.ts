@@ -18,15 +18,36 @@ export class RegisterPage implements OnInit {
   txtcompassword:any;
 
 
-  constructor(private Nav:NavController, public dataapi : DatabasekruapalaiService , private route:Router) {
+  constructor(private Nav:NavController,
+    public dataapi : DatabasekruapalaiService,
+    private route:Router) {
 
    }
-   gotohome1(){
-    this.Nav.navigateForward('/home')
-   }
 
-   
   ngOnInit() {
   }
 
+  register(){
+    let data = {
+      username: this.txtusername,
+      name: this.txtname,
+      phone: this.txtphone,
+      password: this.txtpassword,
+      compassword: this.txtcompassword
+    }
+    this.dataapi.registerUser(data).subscribe({
+      next: (res:any) => {
+      alert(res.message);
+      this.route.navigateByUrl('/home');
+     },
+     error: (error) => {
+      console.log(error);
+      alert("Register failed" + error.message);
+     }
+    });
+  }
+
+  gotohome(){
+    this.route.navigate(['/home']);
+  }
 }

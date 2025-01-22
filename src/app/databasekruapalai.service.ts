@@ -16,19 +16,31 @@ export class DatabasekruapalaiService {
 
   addmenu(data:any){
     console.log("ค่ามาจากแอป" , data);
-    return this.http.post('http://127.0.0.1/apiproject/insertmamu.php', data);
+    return this.http.post('http://127.0.0.1/api/insertmenu.php', data);
    }
 
    showmenu(){
-    return this.http.get('http://127.0.0.1/apiproject/listmamu.php');
+    return this.http.get('http://127.0.0.1/api/listmenu.php');
    }
 
    delMember(id:any){
-    return this.http.delete('http://127.0.0.1/apiproject/deletemamu.php?id='+id);
+    return this.http.delete('http://127.0.0.1/api/deletemenu.php?id='+id);
   }
 
   updatestatus(upstatus:any){
-    return this.http.put('http://127.0.0.1/apiproject/updatestatus.php',upstatus);
+    return this.http.put('http://127.0.0.1/api/updatestatus.php',upstatus);
+  }
+
+  registerUser(dataUser:any){
+    return this.http.post('http://127.0.0.1/api/register.php', dataUser);
+   }
+
+   loginUser(datalog:any){
+    return this.http.post('http://127.0.0.1/api/login.php', datalog);
+  }
+
+   logoutUser(){
+    return this.http.post('http://127.0.0.1/api/logout.php',{});
   }
 
 }

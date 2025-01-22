@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabasekruapalaiService } from '../databasekruapalai.service';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit',
@@ -13,7 +14,7 @@ export class EditPage implements OnInit {
   created_at:any;
   status:any;
 
-  constructor(public dataapi:DatabasekruapalaiService, private route:Router) { }
+  constructor(public dataapi:DatabasekruapalaiService, private route:Router, private nav:NavController) { }
 
   ngOnInit() {
     this.menu = this.dataapi.data_dateilmamu;
@@ -33,6 +34,10 @@ export class EditPage implements OnInit {
         console.log("ไม่สามารถแก้ไขข้อมูลได้", err);
       },
     });
+  }
+
+  gotoshowlistmenu(){
+    this.nav.navigateForward(['/showlistmenu']);
   }
 
 }

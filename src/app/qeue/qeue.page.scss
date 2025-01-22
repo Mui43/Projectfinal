@@ -28,7 +28,7 @@
     border-top-right-radius:10px;
     border-bottom-left-radius:10px;
     border-bottom-right-radius:10px;
-    height:500px;
+    height:auto;
   }
   .button1{
     margin-top: 60px;
@@ -48,4 +48,14 @@
   font-size: 40px;
   color: whitesmoke;
   text-align: center;
+}
+
+//style menu items
+.menu{
+  width: 10rem;
+  height: 15rem ;
+  margin-left: 10px;
+}
+.imgmenu{
+  width: 10rem;
 }
