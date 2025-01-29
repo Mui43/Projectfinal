@@ -78,4 +78,8 @@ export class ShowlistmenuPage implements OnInit {
       },
     });
   }
+
+  gotoaddmenu(){
+    this.nav.navigateForward('/listmenu');
+  }
 }

@@ -13,32 +13,35 @@ export class HomePage {
   txtusername:any;
   txtpassword:any;
 
-  constructor(private Nav:NavController,
-    public dataapi: DatabasekruapalaiService,
-    public route: Router
-  ){}
+  constructor(
+    public route: Router,
+    public dataapi: DatabasekruapalaiService) {}
 
-  login() {
-    let datalog = {
-      username: this.txtusername,
-      password: this.txtpassword
+    login() {
+      let datalog = {
+        username: this.txtusername,
+        password: this.txtpassword
+      };
+      console.log('Login Data:', datalog); // บันทึกข้อมูลการเข้าสู่ระบบ
+      this.dataapi.loginUser(datalog).subscribe({
+        next: (res:any) => {
+          console.log('Response:', res); // บันทึกการตอบกลับ
+          if (res.success) {
+            localStorage.setItem('token', res.token);
+            this.route.navigateByUrl('/showlistmenu');
+          } else {
+            alert('Error: Invalid credentials ' + res.message);
+          }
+        },
+        error: (error) => {
+          console.log('Error:', error); // บันทึกข้อผิดพลาด
+          alert('Error: ' + error.message);
+        }
+      });
     }
-    this.dataapi.loginUser(datalog).subscribe({
-      next: (res:any) => {
-      if (res.success) {
-        localStorage.setItem('token',res.token);
-        this.route.navigateByUrl('/showlistmenu');
-      }else{
-        alert('Error: Invalid credentials' + res.message);
-      }
-     },
-     error: (error) => {
-      console.log(error);
-      alert('Error: ' +error.message);
-     }
-    });
-  }
-  gotoregister(){
-  this.Nav.navigateForward('/register');
+
+
+  gotoregister() {
+    this.route.navigate(['/register']);
   }
 }

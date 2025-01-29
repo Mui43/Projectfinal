@@ -11,16 +11,13 @@
 
 <ion-card class="ion-card">
   <ion-title class="haed">เข้าสู่ระบบ</ion-title>
+
     <ion-item  class="ion-item">
-      <ion-label position="floating">ชื่อพนักงาน</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input placeholder="ชื่อพนักงาน" [(ngModel)]="txtusername" type="text"></ion-input>
     </ion-item>
 
     <ion-item  class="ion-item2">
-      <ion-label position="floating">รหัสผ่าน</ion-label>
-      <ion-input type="password" value="">
-        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
-      </ion-input>
+      <ion-input placeholder="รหัสผ่าน" [(ngModel)]="txtpassword" type="password"></ion-input>
     </ion-item>
 
     <ion-button size="large" (click)="login()" class="ion-buttonlogin" color="brown-500">เข้าสู่ระบบ</ion-button><br>

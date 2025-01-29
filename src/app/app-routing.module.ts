@@ -43,6 +43,18 @@ const routes: Routes = [
     path: 'showlistmenu',
     loadChildren: () => import('./showlistmenu/showlistmenu.module').then( m => m.ShowlistmenuPageModule)
   },
+  {
+    path: 'addmenu',
+    loadChildren: () => import('./addmenu/addmenu.module').then( m => m.AddmenuPageModule)
+  },
+  {
+    path: 'listmenu',
+    loadChildren: () => import('./listmenu/listmenu.module').then( m => m.ListmenuPageModule)
+  },
+  {
+    path: 'editlistmenu',
+    loadChildren: () => import('./editlistmenu/editlistmenu.module').then( m => m.EditlistmenuPageModule)
+  },
 ];
 
 @NgModule({
