@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { DatabasekruapalaiService } from '../databasekruapalai.service';
 import { Router } from '@angular/router';
+import { DatabasekruapalaiService } from '../databasekruapalai.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,39 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  txtusername:any;
-  txtpassword:any;
+  txtusername: string = '';
+  txtpassword: string = '';
 
   constructor(
-    public route: Router,
-    public dataapi: DatabasekruapalaiService) {}
+    private router: Router,
+    private dataapi: DatabasekruapalaiService,
+    private alertController: AlertController
+  ) {}
 
-    login() {
-      let datalog = {
-        username: this.txtusername,
-        password: this.txtpassword
-      };
-      console.log('Login Data:', datalog); // บันทึกข้อมูลการเข้าสู่ระบบ
-      this.dataapi.loginUser(datalog).subscribe({
-        next: (res:any) => {
-          console.log('Response:', res); // บันทึกการตอบกลับ
-          if (res.success) {
-            localStorage.setItem('token', res.token);
-            this.route.navigateByUrl('/showlistmenu');
-          } else {
-            alert('Error: Invalid credentials ' + res.message);
-          }
-        },
-        error: (error) => {
-          console.log('Error:', error); // บันทึกข้อผิดพลาด
-          alert('Error: ' + error.message);
-        }
-      });
+  login() {
+    if (this.txtusername === 'admin' && this.txtpassword === '123456') {
+      // นำทางไปยังหน้า Home ถ้าข้อมูลถูกต้อง
+      this.router.navigate(['/showlistmenu']);
+    } else {
+      // แสดงข้อความแจ้งเตือนถ้าข้อมูลไม่ถูกต้อง
+      alert('Username หรือ Password ไม่ถูกต้อง');
     }
-
-
-  gotoregister() {
-    this.route.navigate(['/register']);
   }
 }

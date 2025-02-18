@@ -20,37 +20,26 @@
     </ion-fab-list>
   </ion-fab>
 <!--Showmenu-->
-<ion-grid>
-  <ion-row>
-    <ion-col size="6">
-      <ng-container *ngFor="let p of products; let i = index">
-        <ion-card *ngIf="i % 2 === 0" class="card">
-          <img alt="No image" [src]="'http://127.0.0.1/2-3/apiproject/' + p.image" />
-          <ion-card-header>
-            <ion-card-title class="card-title">{{p.name}}</ion-card-title>
-            <ion-card-subtitle class="card-price">{{p.price}} บาท</ion-card-subtitle>
-          </ion-card-header>
-          <ion-button color="primary" (click)="editProduct(p)">แก้ไข</ion-button>
-          <ion-button color="danger" (click)="deletepro(p.id)">ลบ</ion-button>
-        </ion-card>
-      </ng-container>
-    </ion-col>
-
-    <ion-col size="6">
-      <ng-container *ngFor="let p of products; let i = index">
-        <ion-card *ngIf="i % 2 !== 0" class="card">
-          <img alt="No image" [src]="'http://127.0.0.1/2-3/apiproject/' + p.image" />
-          <ion-card-header>
-            <ion-card-title class="card-title">{{p.name}}</ion-card-title>
-            <ion-card-subtitle class="card-price">{{p.price}} บาท</ion-card-subtitle>
-          </ion-card-header>
-          <ion-button color="primary" (click)="editProduct(p)">แก้ไข</ion-button>
-          <ion-button color="danger" (click)="deletepro(p.id)">ลบ</ion-button>
-        </ion-card>
-      </ng-container>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>เมนู</ion-card-title>
+    <ion-card-subtitle>รายการเมนูทั้งหมด</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card>
+    <ion-list>
+      <ion-item *ngFor="let i of products">
+        <ion-thumbnail slot="start">
+          <img alt="No image" [src]="'http://127.0.0.1/2-3/apiproject/' + i.image" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{i.name}}</h2>
+          <p>{{i.price}} บาท</p>
+        </ion-label>
+        <ion-button (click)="deletepro(i.id)" color="danger">ลบข้อมูล</ion-button>
+        <ion-button (click)="editProduct(i)">แก้ไขข้อมูล</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-card>
 
 </ion-content>

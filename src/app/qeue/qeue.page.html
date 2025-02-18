@@ -19,14 +19,30 @@
       </ion-item>
     <ion-button expand="block" (click)="showQueueNumber()" (click)="addmenus()" class="ion-item2" color="brown-1000">รับคิว</ion-button>
 
-    <ion-grid >
+    <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let i of Product ">
-          <ion-card class="menu">
-            <img alt="" [src]=" i.image" class="imgmenu"/>
-            <ion-label><h2>{{i.name}}</h2></ion-label>
-            <ion-label><p>ราคา {{i.price}} บาท</p></ion-label>
-          </ion-card>
+        <ion-col size="6">
+          <ng-container *ngFor="let p of datamamu; let i = index">
+            <ion-card *ngIf="i % 2 === 0" class="card">
+              <img alt="No image" [src]="'http://127.0.0.1/2-3/apiproject/' + p.image" />
+              <ion-card-header>
+                <ion-card-title class="card-title">{{p.name}}</ion-card-title>
+                <ion-card-subtitle class="card-price">{{p.price}} บาท</ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+          </ng-container>
+        </ion-col>
+
+        <ion-col size="6">
+          <ng-container *ngFor="let p of datamamu; let i = index">
+            <ion-card *ngIf="i % 2 !== 0" class="card">
+              <img alt="No image" [src]="'http://127.0.0.1/2-3/apiproject/' + p.image" />
+              <ion-card-header>
+                <ion-card-title class="card-title">{{p.name}}</ion-card-title>
+                <ion-card-subtitle class="card-price">{{p.price}} บาท</ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+          </ng-container>
         </ion-col>
       </ion-row>
     </ion-grid>
